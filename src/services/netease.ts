@@ -24,6 +24,9 @@ const isElectronRuntime = () =>
   Boolean(getElectronBridge() && typeof getElectronBridge()?.getNeteasePort === 'function');
 
 const getConfiguredApiBase = () => {
+  // 个人云端部署：固定使用已修复跨域配置的 API 实例（folia-netease-api 新部署）
+  return 'https://folia-netease-api-xi.vercel.app';
+  /* eslint-disable no-unreachable */
   const viteEnv = typeof import.meta !== 'undefined' ? (import.meta as any).env : undefined;
   if (viteEnv && typeof viteEnv.VITE_NETEASE_API_BASE === 'string' && viteEnv.VITE_NETEASE_API_BASE) {
     return viteEnv.VITE_NETEASE_API_BASE;
